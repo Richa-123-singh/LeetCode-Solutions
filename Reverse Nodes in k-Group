@@ -1,0 +1,24 @@
+struct ListNode* p = head,*q,*r = head ;
+
+    int i=0,j =0;
+    while(r != NULL)
+    {
+        r = r->next ;
+        j++;
+    }
+    if(j < k)
+        return head;
+    
+    r =NULL;
+    while(p !=NULL && i < k){
+        q = p->next;
+        p->next = r;
+        r = p;
+        p =q;
+        i++;
+    }
+    
+   if(q !=  NULL)
+       head->next = reverseKGroup(q, k);
+    
+    return r;
